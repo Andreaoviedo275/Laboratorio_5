@@ -26,9 +26,9 @@ Este laboratorio tiene como objetivo analizar la variabilidad de la frecuencia c
     - Parasimpática: promueve el estado de “reposo y digestión”. Disminuye la frecuencia cardíaca, estimula la actividad digestiva y favorece el descanso.
     
     Ambas ramas actúan de manera complementaria y se equilibran constantemente para mantener la homeostasis.
+   
   
-  
-2.  Efecto de la actividad simpática y parasimpática en la frecuencia cardíaca:
+3.  Efecto de la actividad simpática y parasimpática en la frecuencia cardíaca:
    
     - Estimulación simpática: incrementa la frecuencia cardíaca al liberar noradrenalina, que actúa sobre los receptores β1 del nodo sinoauricular (SA) en el corazón.
     
@@ -37,7 +37,7 @@ Este laboratorio tiene como objetivo analizar la variabilidad de la frecuencia c
     - El balance entre estas dos influencias determina la frecuencia cardíaca en un momento dado.
     
   
-3. Variabilidad de la frecuencia cardíaca (HRV):
+4. Variabilidad de la frecuencia cardíaca (HRV):
      
     La HRV (Heart Rate Variability) es la variación en el tiempo entre latidos cardíacos sucesivos, medida comúnmente como fluctuaciones en los intervalos R-R del ECG (intervalo entre dos ondas R consecutivas).
     
@@ -64,7 +64,7 @@ Este laboratorio tiene como objetivo analizar la variabilidad de la frecuencia c
       
       - LF/HF ratio: usado para estimar el balance simpático/parasimpático.
   
-4. Transformada Wavelet
+5. Transformada Wavelet
    
     Definición:
     
@@ -92,10 +92,12 @@ Este laboratorio tiene como objetivo analizar la variabilidad de la frecuencia c
     
     - Morlet: frecuentemente usada en análisis espectral de señales EEG o HRV.
 
-5. Filtros IIR
+6. Filtros IIR
 
     Los filtros IIR (respuesta infinita al impulso) permiten limpiar señales biológicas de ruido, interferencias y artefactos sin requerir grandes órdenes.
-   
+
+
+
 📌 Parte I – Análisis de HRV con Transformada Wavelet
 
 🔹 Paso 1: Carga de datos y estadísticas básicas
@@ -116,16 +118,6 @@ Este laboratorio tiene como objetivo analizar la variabilidad de la frecuencia c
 * Se define la frecuencia de muestreo.
 
 * Se calcula duración total y niveles de cuantificación (4096 niveles en 12 bits).
-
-IMAGEN AQUI
-
-Explicación:
-
-- Señal bien centrada (media ≈ 0)
-
-- Bajo nivel de ruido (SD pequeña)
-
-- Coeficiente de variación alto por división entre media muy baja.
 
 🔹 Paso 2: Cálculo de medidas estadísticas
 
