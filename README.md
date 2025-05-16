@@ -96,7 +96,10 @@ Este laboratorio tiene como objetivo analizar la variabilidad de la frecuencia c
 
     Los filtros IIR (respuesta infinita al impulso) permiten limpiar señales biológicas de ruido, interferencias y artefactos sin requerir grandes órdenes.
 
+![Diagrama](https://github.com/user-attachments/assets/ecafc350-d307-4086-b72e-8c79b3bf4f3c)
 
+
+Imagen 1. Diagrama de flujo
 
 📌 Parte I – Análisis de HRV con Transformada Wavelet
 
@@ -119,6 +122,10 @@ Este laboratorio tiene como objetivo analizar la variabilidad de la frecuencia c
 
 * Se calcula duración total y niveles de cuantificación (4096 niveles en 12 bits).
 
+![image](https://github.com/user-attachments/assets/198acdd3-a6a1-4fe9-937f-8dd605c87b7b)
+
+Imagen 2. Adquisión de la señal
+
 🔹 Paso 2: Cálculo de medidas estadísticas
 
         media = np.mean(ecg_filtrado)
@@ -128,6 +135,8 @@ Este laboratorio tiene como objetivo analizar la variabilidad de la frecuencia c
         coef_variacion = desviacion / media
 
 ![image](https://github.com/user-attachments/assets/31b629a8-0144-404d-b0fd-e4838b765490)
+
+Imagen 3. Medidas Estadisticas
 
 - Media cercana a 0 mV: indica una señal bien centrada.
 
@@ -146,6 +155,8 @@ Este laboratorio tiene como objetivo analizar la variabilidad de la frecuencia c
 - Se detectan los picos R sobre la señal ECG filtrada. Estos representan los latidos del corazón.
 
 ![image](https://github.com/user-attachments/assets/67f6770f-0022-428c-9ef8-8064bc6c2111)
+
+Imagen 4. Detección de picos
 
 * Línea azul: Señal ECG limpia.
 
@@ -178,6 +189,8 @@ Este laboratorio tiene como objetivo analizar la variabilidad de la frecuencia c
 
 ![image](https://github.com/user-attachments/assets/053a7ed8-07dc-40d9-840b-1b09b8fe4bfc)
 
+Imagen 5. HRV
+
 - Línea verde con puntos: Variación de intervalos R-R.
 
 - Línea azul punteada: Media de los intervalos.
@@ -200,6 +213,8 @@ Justificación fisiológica:
 
 ![image](https://github.com/user-attachments/assets/53d81d33-2c15-470a-b105-6f8e58635520)
 
+Imagen 6. Medidas
+
 - Media R-R = 37.03 s: promedio del tiempo entre latidos.
 
 - SDNN = 18.44 s: variación saludable entre los intervalos.
@@ -211,9 +226,11 @@ Justificación fisiológica:
         cwt_result, freqs = pywt.cwt(intervalos_RR, scales, wavelet, sampling_period=1)
 
 - Se aplica la CWT sobre los intervalos R-R, usando la wavelet compleja Morlet (cmor).
+
 - La Transformada Wavelet Continua permite representar cómo varían las frecuencias a lo largo del tiempo (análisis tiempo-frecuencia).
 
 ![image](https://github.com/user-attachments/assets/393fc2bd-3e30-4f81-8188-ad0df538c6fe)
+Imagen 7. Transformada de Wavelet
 
 - Color: Amplitud (potencia espectral).
 
@@ -248,6 +265,7 @@ Justificación fisiológica:
         power_hf = np.abs(cwt_result[hf_mask, :])**2
 
 ![image](https://github.com/user-attachments/assets/b4ae203e-55db-40a8-b7d7-e93872c05bca)
+Imagen 8. Espectro
 
 - Arriba: Potencia en banda LF.
 
@@ -293,6 +311,7 @@ Justificación fisiológica:
 - filtfilt() aplica el filtro sin fase.
 
 ![Figure 2025-05-15 202108](https://github.com/user-attachments/assets/04efe926-c2fe-41df-a1be-d1a9bcb95466)
+Imagen 9. ECG con Filtro
 
 - Línea gris punteada: Señal original con ruido y artefactos.
 
@@ -310,6 +329,7 @@ Justificación fisiológica:
         for i, ai in enumerate(a): print(...)
 
 ![image](https://github.com/user-attachments/assets/9635c4bb-f330-48bb-9323-c23e9913461c)
+Imagen 10. Ecuaciones en la consola
 
 🔹 Paso 5: Ecuación explícita
 
@@ -317,6 +337,7 @@ Justificación fisiológica:
         terms_a = [f"{-a[i]:+.3e}·y[n-{i}]" for i in range(1, len(a))]
 
 ![image](https://github.com/user-attachments/assets/670a5eb7-c56f-41c5-b248-d8dae80a115e)
+Imagen 11. Ecuaciones en la consola
 
 ❤️ Estimación de Frecuencia Cardíaca
 
